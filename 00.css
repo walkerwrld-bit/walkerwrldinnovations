@@ -1,0 +1,241 @@
+/* 00.css - WALKERWRLD INNOVATIONS Razor Wire Quote Styling */
+
+/* --- General & Typography --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Dark Mode Background */
+    color: #e0e0e0; /* Light text for dark background */
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #4CAF50; /* A vibrant green for accents */
+    font-weight: 600;
+    margin-top: 0;
+}
+
+a {
+    color: #81C784; /* Lighter green for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #4CAF50;
+    text-decoration: underline;
+}
+
+/* --- Layout Containers --- */
+.calculator-container,
+.gallery-container,
+.contact-container {
+    background-color: #1e1e1e; /* Slightly lighter dark background for containers */
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+}
+
+/* --- Header & Logo Styling (Request 1) --- */
+.header-logo {
+    display: flex;
+    align-items: center; /* Vertically align logo and text */
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 60px; /* Small logo size */
+    height: auto;
+    margin-right: 15px; /* Space between logo and company name */
+    border-radius: 5px;
+}
+
+.header-logo h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #e0e0e0; /* Company name should stand out */
+}
+
+/* --- Calculator Inputs & Button --- */
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50; /* Green call-to-action button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: 100%; /* Full width button */
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* --- Results and Cost Breakdown --- */
+.results-container {
+    padding: 15px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    margin-top: 15px;
+    background-color: #2c2c2c;
+    min-height: 50px;
+}
+
+.cost-breakdown ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cost-breakdown li {
+    padding: 5px 0;
+    border-bottom: 1px dashed #333;
+}
+
+/* --- Gallery Styling (Request 2) --- */
+.gallery-container {
+    text-align: center;
+    overflow: hidden; /* Hide overflowing images initially */
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: scroll; /* Allow horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to images */
+    padding-bottom: 10px;
+}
+
+.gallery-image {
+    flex: 0 0 50%; /* Show 2 images per row on large screens */
+    /* Adjust flex basis for mobile later */
+    width: 50%;
+    aspect-ratio: 4/3; /* Set a consistent aspect ratio */
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    scroll-snap-align: start;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
+
+    /* Animation effect: "Opening Book" by rotating slightly */
+    transform-origin: left center;
+    animation: book-open 20s infinite alternate; /* The animation */
+    /* Adjust the animation delay for staggered effect */
+    animation-delay: calc(var(--i) * 2s); 
+}
+
+/* Keyframes for the "Opening Book" effect */
+/* Note: Since we can't easily assign --i in pure CSS from the HTML structure, */
+/* The animation will apply to all. A staggered effect would require JS. */
+/* We will simulate a subtle, continuous sliding/opening showcase. */
+@keyframes book-open {
+    0% { transform: scale(1.0); }
+    50% { transform: scale(1.05); } /* Subtle zoom */
+    100% { transform: scale(1.0); }
+}
+
+/* Better alternative for the requested effect: CSS Scroll Snap with hover animation */
+.gallery-image:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+
+/* --- Contact Information Styling (Request 3 - Professional Look) --- */
+.contact-container h3 {
+    text-align: center;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.contact-info p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    background-color: #2c2c2c;
+    padding: 10px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 5px;
+}
+
+.contact-info strong {
+    font-weight: normal;
+    min-width: 100px; /* Aligns the link text */
+}
+
+.contact-info a {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Specific styling for Facebook link for professional look */
+.contact-info a[href*="facebook"] {
+    color: #4267B2; /* Facebook Blue */
+}
+
+.contact-info a[href*="facebook"]:hover {
+    color: #8b9dc3;
+}
+
+.contact-info a[href*="tel"],
+.contact-info a[href*="wa.me"] {
+    color: #075E54; /* WhatsApp/Call Green */
+}
+
+
+/* --- Responsive Design (Mobile adjustments) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .header-logo h1 {
+        font-size: 1.5em;
+    }
+
+    button {
+        padding: 15px 20px;
+    }
+
+    /* Gallery adjustment for mobile: show 1 image at a time */
+    .gallery-image {
+        flex: 0 0 90%; 
+        width: 90%;
+    }
+}
